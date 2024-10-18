@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\GitHubs\\MoneyCare\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{6B7A9060-88ED-4D83-8D40-59D02CD76A53}|MoneyCare\\MoneyCare.vcxproj|D:\\GitHubs\\MoneyCare\\MoneyCare\\MainLogic.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{6B7A9060-88ED-4D83-8D40-59D02CD76A53}|MoneyCare\\MoneyCare.vcxproj|solutionrelative:MoneyCare\\MainLogic.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainLogic.cpp",
+              "DocumentMoniker": "D:\\GitHubs\\MoneyCare\\MoneyCare\\MainLogic.cpp",
+              "RelativeDocumentMoniker": "MoneyCare\\MainLogic.cpp",
+              "ToolTip": "D:\\GitHubs\\MoneyCare\\MoneyCare\\MainLogic.cpp",
+              "RelativeToolTip": "MoneyCare\\MainLogic.cpp",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-10-18T10:27:06.262Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
