@@ -19,11 +19,15 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Category.cpp" />
+    <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Coroutine.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Category.h" />
+    <ClInclude Include="DataManager.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Coroutine.h" />
   </ItemGroup>
@@ -113,7 +117,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\GitHubs\MoneyCare\MoneyCare\Libraries\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHubs\MoneyCare\MoneyCare\Libraries\SFML\include;D:\GitHubs\MoneyCare\MoneyCare\Libraries\Json</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -130,7 +135,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>D:\GitHubs\MoneyCare\MoneyCare\Libraries\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\GitHubs\MoneyCare\MoneyCare\Libraries\SFML\include;D:\GitHubs\MoneyCare\MoneyCare\Libraries\Json</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

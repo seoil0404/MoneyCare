@@ -13,10 +13,13 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\BackEnd">
+    <Filter Include="헤더 파일\Backend">
+      <UniqueIdentifier>{f94b802a-4012-4a18-9107-b534007e3afb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Backend">
       <UniqueIdentifier>{23c5c356-a622-482b-93ad-6e69a0aa021f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\FrontEnd">
+    <Filter Include="소스 파일\Frontend">
       <UniqueIdentifier>{951da748-b625-4023-ae13-3da1282cc4c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -30,6 +33,12 @@
     <ClCompile Include="Global.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="Category.cpp">
+      <Filter>소스 파일\Backend</Filter>
+    </ClCompile>
+    <ClCompile Include="DataManager.cpp">
+      <Filter>소스 파일\Backend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coroutine.h">
@@ -37,6 +46,12 @@
     </ClInclude>
     <ClInclude Include="Global.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Category.h">
+      <Filter>헤더 파일\Backend</Filter>
+    </ClInclude>
+    <ClInclude Include="DataManager.h">
+      <Filter>헤더 파일\Backend</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@ public:
 		functionQueue.push(std::bind(std::forward<Function>(function), std::forward<Arguments>(arguments)...));
 	}
 private:
-	static void processFunctions();
+	static void updateFunctions();
 
 	static std::queue<std::function<void()>> functionQueue;
 	

@@ -2,7 +2,7 @@
 
 std::queue<std::function<void()>> Coroutine::functionQueue;
 
-void Coroutine::processFunctions()
+void Coroutine::updateFunctions()
 {
 	int queueSize = functionQueue.size();
 	for (int index = 0; index < queueSize; index++)

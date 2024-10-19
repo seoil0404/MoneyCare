@@ -10,34 +10,32 @@
 #include <queue>
 #include <iostream>
 #include "Coroutine.h"
+#include "Category.h"
+#include "DataManager.h"
 
 void start();
-void updateTest1();
-void updateTest2();
 
 int main()
 {
 	start();
 	while (true)
 	{
-		Coroutine::processFunctions();
+		Coroutine::updateFunctions();
 	}
 }
 
 void start()
 {
-	Coroutine::AddCoroutine(updateTest1);
-	Coroutine::AddCoroutine(updateTest2);
-}
-
-void updateTest1()
-{
-	std::cout << "Test1\n";
-	Coroutine::AddCoroutine(updateTest1);
-}
-
-void updateTest2()
-{
-	std::cout << "Test2\n";
-	Coroutine::AddCoroutine(updateTest2);
+	CategoryManager::AddCategory(Category("Category1"));
+	CategoryManager::AddCategory(Category("Category2"));
+	CategoryManager::AddCategory(Category("Category3"));
+	CategoryManager::AddCategory(Category("Category4"));
+	CategoryManager::AddCategory(Category("Category5"));
+	CategoryManager::AddCategory(Category("Category6"));
+	//CategoryManager::DeleteCategory("Category3");
+	CategoryManager::DeleteCategory(CategoryManager::getAllCategoryData()[4]);
+	for (Category index : CategoryManager::getAllCategoryData())
+	{
+		std::cout << index.getCategoryName() << " ";
+	}
 }
