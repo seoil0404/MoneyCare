@@ -19,7 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MainLogic.cpp" />
+    <ClCompile Include="Global.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Coroutine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Global.h" />
+    <ClInclude Include="Coroutine.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
