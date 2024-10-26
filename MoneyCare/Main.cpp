@@ -9,38 +9,36 @@
 #include <functional>
 #include <queue>
 #include <iostream>
+#include <SFML/Graphics.hpp>
+#include "RenderWindowEx.h"
 #include "Coroutine.h"
 #include "Category.h"
 #include "DataManager.h"
 #include "Json.h"
+#include "WindowManager.h"
 
-void start();
+void Start();
 void test1();
+void test2();
 
 int main()
 {
-	start();
+	Time::ClockUpdate();
+	WindowManager::EventUpdate();
+	WindowManager::ClearWindow();
+	Start();
+	WindowManager::DisplayWindow();
 	while (true)
 	{
 		Coroutine::updateFunctions();
 	}
 }
 
-void start()
+void Start()
 {
-	DataManager::AddLayer();
-
-	CategoryManager::AddCategory(Category("Test1"));
-	CategoryManager::AddCategory(Category("Test2"));
-	CategoryManager::AddCategory(Category("Test3"));
 	
-	Layer& layer = DataManager::getRecentLayer();
 	
-	layer.AddItem(Item(100, "test1", CategoryManager::getAllCategoryData()[0]));
-	layer.AddItem(Item(150, "test2", CategoryManager::getAllCategoryData()[2]));
-	layer.AddItem(Item(100, "test3", CategoryManager::getAllCategoryData()[1]));
-
-	JsonManager::SaveData(DataManager::getAllLayer(), CategoryManager::getAllCategoryData());
+	
 }
 
 void test1()
@@ -56,4 +54,21 @@ void test1()
 	{
 		std::cout << index.getCategoryName() << " ";
 	}
+}
+
+void test2()
+{
+	DataManager::AddLayer();
+
+	CategoryManager::AddCategory(Category("Test1"));
+	CategoryManager::AddCategory(Category("Test2"));
+	CategoryManager::AddCategory(Category("Test3"));
+
+	Layer& layer = DataManager::getRecentLayer();
+
+	layer.AddItem(Item(100, "test1", CategoryManager::getAllCategoryData()[0]));
+	layer.AddItem(Item(150, "test2", CategoryManager::getAllCategoryData()[2]));
+	layer.AddItem(Item(100, "test3", CategoryManager::getAllCategoryData()[1]));
+
+	JsonManager::SaveData(DataManager::getAllLayer(), CategoryManager::getAllCategoryData());
 }
