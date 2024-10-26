@@ -22,9 +22,6 @@
     <Filter Include="소스 파일\Frontend">
       <UniqueIdentifier>{951da748-b625-4023-ae13-3da1282cc4c6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Backend\JsonInclude">
-      <UniqueIdentifier>{ebb99096-3910-46f1-a1b1-5ce805f6a469}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\Backend\Json">
       <UniqueIdentifier>{fa4361c5-0e39-42ec-9690-15eb8d40dbad}</UniqueIdentifier>
     </Filter>
@@ -66,14 +63,14 @@
     <ClCompile Include="DebugLog.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="RenderWindowEx.cpp">
-      <Filter>소스 파일\Frontend</Filter>
-    </ClCompile>
     <ClCompile Include="WindowManager.cpp">
       <Filter>소스 파일\Frontend</Filter>
     </ClCompile>
     <ClCompile Include="ApplicationManaager.cpp">
       <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Extentions.cpp">
+      <Filter>소스 파일\Frontend</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -95,14 +92,14 @@
     <ClInclude Include="DebugLog.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="RenderWindowEx.h">
+    <ClInclude Include="ApplicationManager.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Extentions.h">
       <Filter>헤더 파일\Frontend</Filter>
     </ClInclude>
     <ClInclude Include="WindowManager.h">
       <Filter>헤더 파일\Frontend</Filter>
-    </ClInclude>
-    <ClInclude Include="ApplicationManager.h">
-      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

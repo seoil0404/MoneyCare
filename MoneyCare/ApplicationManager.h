@@ -1,5 +1,4 @@
 #pragma once
-#include "DebugLog.h"
 
 class ApplicationManager
 {

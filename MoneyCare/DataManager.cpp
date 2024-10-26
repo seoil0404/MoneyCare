@@ -1,4 +1,5 @@
 #include "DataManager.h"
+#include "DebugLog.h"
 
 void DataManager::AddLayer(Layer layer)
 {

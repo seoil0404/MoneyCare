@@ -1,6 +1,5 @@
 #pragma once
 #include "Category.h"
-#include "DebugLog.h"
 #include <vector>
 
 // A piece of Layer

@@ -1,12 +1,10 @@
 #include "WindowManager.h"
+#include "Coroutine.h"
+#include "ApplicationManager.h"
+#include "DebugLog.h"
 
 sf::RenderWindowEx WindowManager::window;
 sf::Event WindowManager::eventState;
-
-void WindowManager::Update(const std::queue<sf::Drawable*>& objectQueue)
-{
-	window.draw(objectQueue);
-}
 
 void WindowManager::EventUpdate()
 {
@@ -19,16 +17,16 @@ void WindowManager::EventUpdate()
 			ApplicationManager::Quit();
 		}
 	}
-	
+
 	//Debug::Log("DEBUG: EventUpdate function has been executed");
-	
+
 	Coroutine::AddCoroutine(EventUpdate);
 }
 
 void WindowManager::ClearWindow()
 {
 	window.clear();
-	
+
 	//Debug::Log("DEBUG: ClearWindow function has been executed");
 
 	Coroutine::AddCoroutine(ClearWindow);

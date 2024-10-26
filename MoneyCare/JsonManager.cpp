@@ -1,4 +1,6 @@
 #include "Json.h"
+#include "DebugLog.h"
+#include <fstream>
 
 void JsonManager::LoadData(std::vector<Layer>& layer, std::vector<Category>& category)
 {

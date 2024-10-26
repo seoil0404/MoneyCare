@@ -1,9 +1,5 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "WindowManager.h"
-#include "Coroutine.h"
-#include "DebugLog.h"
-#include "string"
 
 class Time
 {

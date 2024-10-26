@@ -1,7 +1,6 @@
 #pragma once
 #include <functional>
 #include <queue>
-#include "DebugLog.h"
 
 class Coroutine
 {

@@ -23,6 +23,7 @@
     <ClCompile Include="Category.cpp" />
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DebugLog.cpp" />
+    <ClCompile Include="Extentions.cpp" />
     <ClCompile Include="FromJson.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -30,7 +31,6 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Coroutine.cpp" />
-    <ClCompile Include="RenderWindowEx.cpp" />
     <ClCompile Include="ToJson.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
@@ -39,10 +39,10 @@
     <ClInclude Include="Category.h" />
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="DebugLog.h" />
+    <ClInclude Include="Extentions.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Coroutine.h" />
     <ClInclude Include="Json.h" />
-    <ClInclude Include="RenderWindowEx.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

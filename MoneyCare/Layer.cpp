@@ -1,5 +1,5 @@
 #include "DataManager.h"
-
+#include "DebugLog.h"
 
 std::vector<Layer> DataManager::layerData;
 

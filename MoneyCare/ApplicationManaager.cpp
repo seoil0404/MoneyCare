@@ -1,4 +1,5 @@
 #include "ApplicationManager.h"
+#include "DebugLog.h"
 
 void ApplicationManager::Quit()
 {

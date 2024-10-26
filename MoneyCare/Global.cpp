@@ -1,4 +1,6 @@
 #include "Global.h"
+#include "Coroutine.h"
+#include "DebugLog.h"
 
 sf::Clock Time::clock;
 

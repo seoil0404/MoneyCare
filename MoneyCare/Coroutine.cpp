@@ -1,4 +1,5 @@
 #include "Coroutine.h"
+#include "DebugLog.h"
 
 std::queue<std::function<void()>> Coroutine::functionQueue;
 
