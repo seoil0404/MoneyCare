@@ -15,7 +15,7 @@ sf::RenderWindowEx::RenderWindowEx(
 
 void sf::RenderWindowEx::setScreenRatio(int ratioX, int ratioY)
 {
-    sf::FloatRect floatRect(0, 0, ratioX, ratioY);
+    sf::FloatRect floatRect(0, 0, (float)ratioX, (float)ratioY);
 
     sf::View view(floatRect);
 
@@ -24,28 +24,26 @@ void sf::RenderWindowEx::setScreenRatio(int ratioX, int ratioY)
 
 // RectangleShapeEx -----------------------------------------------------------------------------------------------------
 
-sf::RectangleShapeEx* sf::RectangleShapeEx::Create(sf::Vector2f transform)
+std::shared_ptr<sf::RectangleShapeEx> sf::RectangleShapeEx::Create(sf::Vector2f size)
 {
-    return new sf::RectangleShapeEx(transform);
+    std::shared_ptr<sf::RectangleShapeEx> tempObject(new RectangleShapeEx(size));
+    
+    tempObject->UpdateObject();
+
+    return tempObject;
 }
 
-sf::RectangleShapeEx::RectangleShapeEx(sf::Vector2f transform) : sf::RectangleShape(transform), needDestroy(false)
+sf::RectangleShapeEx::RectangleShapeEx(sf::Vector2f size) : sf::RectangleShape(size)
 {
-    UpdateObject();
+    // set origin to middle of the object
+    this->setOrigin(sf::Vector2f(this->getSize().x / 2, this->getSize().y / 2));
 }
 
 void sf::RectangleShapeEx::UpdateObject()
 {
-    SafeCheckDelete();
-
     WindowManager::window.draw(*this);
-    
-    Coroutine::AddCoroutine(&RectangleShapeEx::UpdateObject, this);
-}
 
-void sf::RectangleShapeEx::SafeCheckDelete()
-{
-    if (needDestroy) {
-        delete this;
-    }
+    Debug::Log("DEBUG: Object has been updated");
+    
+    Coroutine::SafeAddCoroutine(static_cast<std::weak_ptr<sf::RectangleShapeEx>>(shared_from_this()), std::bind(&sf::RectangleShapeEx::UpdateObject, this));
 }

@@ -40,6 +40,6 @@ int main()
 
 void Start()
 {
-	sf::RectangleShapeEx* a = sf::RectangleShapeEx::Create(sf::Vector2f(100, 100));
-	a->setPosition(sf::Vector2f(750, 450));
+	std::shared_ptr<sf::RectangleShapeEx> a = sf::RectangleShapeEx::Create(sf::Vector2f(100, 100));
+	a->setPosition(sf::Vector2f(800, 450));
 }

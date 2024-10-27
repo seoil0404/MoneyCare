@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <queue>
+#include <memory>
 
 namespace sf
 {
@@ -17,24 +18,28 @@ namespace sf
 		void setScreenRatio(int, int);
 	};
 
-	// Drawable Extentions -----------------------------------------------------------------------------------------------------
+// Drawable Extentions -----------------------------------------------------------------------------------------------------
 
-	class RectangleShapeEx : public sf::RectangleShape
+	class Animationable
 	{
 	public:
-		static RectangleShapeEx* Create(sf::Vector2f);
-		void Destroy() { needDestroy = true; };
+		virtual void MoveWithAnimation(sf::Vector2f) = 0;
+		virtual void ResizeWithAnimation(sf::Vector2f) = 0;
+	};
+
+	// This class should be created using dynamic allocation and must be destroyed through user-defined functions only.
+	class RectangleShapeEx : public sf::RectangleShape, public std::enable_shared_from_this<RectangleShapeEx>
+	{
+	public:
+		static std::shared_ptr<RectangleShapeEx> Create(sf::Vector2f);
+		~RectangleShapeEx() {};
+		RectangleShapeEx(sf::Vector2f);
+	private:
+		
 
 		void UpdateObject();
-
-	private:
-		RectangleShapeEx(sf::Vector2f);
-		~RectangleShapeEx() {};
-
-		bool needDestroy;
-
-		
-		void SafeCheckDelete();
 	};
+
+	
 }
 

@@ -13,6 +13,7 @@ void WindowManager::EventUpdate()
 		if (eventState.type == sf::Event::Closed)
 		{
 			Debug::Log("DEBUG: Event::Closed has been called");
+
 			window.close();
 			ApplicationManager::Quit();
 		}
