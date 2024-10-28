@@ -126,3 +126,4 @@ void sf::RectangleShapeEx::Resize(sf::Vector2f toScale, float speedRate)
 }
 
 // ButtonShape -----------------------------------------------------------------------------------------------------
+
