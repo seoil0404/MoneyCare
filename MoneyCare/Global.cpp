@@ -5,7 +5,7 @@
 sf::Clock Global::clock;
 
 float Global::deltaTime;
-const float Global::normalizeDeltaTime = 1000;
+const float Global::normalizeDeltaTime = 160;
 
 float Global::DeltaTime()
 {

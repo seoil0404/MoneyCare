@@ -11,6 +11,8 @@ sf::RenderWindowEx::RenderWindowEx(
     : RenderWindow(_VideoMode, _ScreenName, style)
 {
     setScreenRatio(SCREEN_RATIO_X, SCREEN_RATIO_Y);
+    setFramerateLimit(sf::FRAME_LIMIT);
+    
     Debug::Log("DEBUG: RenderWindowEx spawned");
 };
 
@@ -27,7 +29,7 @@ void sf::RenderWindowEx::setScreenRatio(int ratioX, int ratioY)
 
 std::shared_ptr<sf::RectangleShapeEx> sf::RectangleShapeEx::Create(sf::Vector2f size, sf::Vector2f position)
 {
-    std::shared_ptr<sf::RectangleShapeEx> tempObject(new RectangleShapeEx(size, position));
+    std::shared_ptr<sf::RectangleShapeEx> tempObject(new sf::RectangleShapeEx(size, position));
     
     tempObject->UpdateObject();
 
@@ -45,6 +47,7 @@ sf::RectangleShapeEx::RectangleShapeEx(sf::Vector2f size, sf::Vector2f position)
     // set animation state to origin
     this->position_animation = sf::Vector2f(this->getPosition());
     this->position_animation_speed_rate = 0;
+
     this->scale_animation = sf::Vector2f(1, 1);
     this->scale_animation_speed_rate = 0;
 }
@@ -121,3 +124,5 @@ void sf::RectangleShapeEx::Resize(sf::Vector2f toScale, float speedRate)
     if (speedRate > MAX_ANIMATION_SPEED_RATE) speedRate = MAX_ANIMATION_SPEED_RATE;
     scale_animation_speed_rate = speedRate;
 }
+
+// ButtonShape -----------------------------------------------------------------------------------------------------
