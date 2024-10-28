@@ -24,10 +24,10 @@ namespace sf
 	class RectangleShapeEx : public sf::RectangleShape, public std::enable_shared_from_this<RectangleShapeEx>
 	{
 	public:
-		static std::shared_ptr<RectangleShapeEx> Create(sf::Vector2f);
+		static std::shared_ptr<RectangleShapeEx> Create(sf::Vector2f, sf::Vector2f = sf::Vector2f(0, 0));
 
 		~RectangleShapeEx() {};
-		RectangleShapeEx(sf::Vector2f);
+		RectangleShapeEx(sf::Vector2f, sf::Vector2f);
 
 		// this function process with an animation
 		void Translate(sf::Vector2f, float);

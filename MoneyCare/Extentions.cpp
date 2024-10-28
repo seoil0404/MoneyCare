@@ -25,19 +25,22 @@ void sf::RenderWindowEx::setScreenRatio(int ratioX, int ratioY)
 
 // RectangleShapeEx -----------------------------------------------------------------------------------------------------
 
-std::shared_ptr<sf::RectangleShapeEx> sf::RectangleShapeEx::Create(sf::Vector2f size)
+std::shared_ptr<sf::RectangleShapeEx> sf::RectangleShapeEx::Create(sf::Vector2f size, sf::Vector2f position)
 {
-    std::shared_ptr<sf::RectangleShapeEx> tempObject(new RectangleShapeEx(size));
+    std::shared_ptr<sf::RectangleShapeEx> tempObject(new RectangleShapeEx(size, position));
     
     tempObject->UpdateObject();
 
     return tempObject;
 }
 
-sf::RectangleShapeEx::RectangleShapeEx(sf::Vector2f size) : sf::RectangleShape(size)
+sf::RectangleShapeEx::RectangleShapeEx(sf::Vector2f size, sf::Vector2f position) : sf::RectangleShape(size)
 {
     // set origin to middle of the object
     this->setOrigin(sf::Vector2f(this->getSize().x / 2, this->getSize().y / 2));
+
+    // set position
+    this->setPosition(position);
     
     // set animation state to origin
     this->position_animation = sf::Vector2f(this->getPosition());
