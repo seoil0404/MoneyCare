@@ -1,7 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 
-class Time
+class Global
 {
 public:
 	static float DeltaTime();

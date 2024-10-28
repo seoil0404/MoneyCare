@@ -21,16 +21,24 @@ void WindowManager::EventUpdate()
 
 	//Debug::Log("DEBUG: EventUpdate function has been executed");
 
-	Coroutine::AddCoroutine(EventUpdate);
+	Coroutine::AddCoroutine(
+		[&]() {
+			EventUpdate();
+		}
+	);
 }
 
 void WindowManager::ClearWindow()
 {
 	window.clear();
 
-	//Debug::Log("DEBUG: ClearWindow function has been executed");
+	Debug::Log("DEBUG: ClearWindow function has been executed");
 
-	Coroutine::AddCoroutine(ClearWindow);
+	Coroutine::AddCoroutine(
+		[&]() {
+			ClearWindow();
+		}
+	);
 }
 
 void WindowManager::DisplayWindow()
@@ -39,5 +47,9 @@ void WindowManager::DisplayWindow()
 
 	//Debug::Log("DEBUG: DisplayWindow function has been executed");
 
-	Coroutine::AddCoroutine(DisplayWindow);
+	Coroutine::AddCoroutine(
+		[&]() {
+			DisplayWindow();
+		}
+	);
 }

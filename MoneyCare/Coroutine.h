@@ -7,31 +7,20 @@ class Coroutine
 {
 public:
 	// Loop functions are run in this queue
-	template<typename... Arguments>
-	static void AddCoroutine(std::function<void(Arguments...)> functions, Arguments&&...arguments)
-	{
-		functionQueue.push(std::bind(functions, arguments...));
-	}
-
 	static void AddCoroutine(std::function<void()> functions)
 	{
 		functionQueue.push(functions);
 	}
 
 	template<typename WeakPtr, typename... Arguments>
-	static void SafeAddCoroutine(std::weak_ptr<WeakPtr> weakPtr, std::function<void(Arguments...)> functions, Arguments&&... arguments)
-	{
-		functionQueue.push(std::bind(functions, arguments...));
-		//Coroutine::AddCoroutine(std::bind(&Coroutine::RemoveIfNotExist, this), weakPtr);
-		//functionQueue.push(std::bind(functions, arguments...));
-	}
-
-	template<typename WeakPtr, typename... Arguments>
 	static void SafeAddCoroutine(std::weak_ptr<WeakPtr> weakPtr, std::function<void()> functions)
 	{
+		functionQueue.push(
+			[=]() {
+				Coroutine::RemoveIfNotExist(weakPtr);
+			}
+		);
 		functionQueue.push(functions);
-		//Coroutine::AddCoroutine(std::bind(&Coroutine::RemoveIfNotExist, this), weakPtr);
-		//functionQueue.push(functions);
 	}
 	
 

@@ -2,21 +2,25 @@
 #include "Coroutine.h"
 #include "DebugLog.h"
 
-sf::Clock Time::clock;
+sf::Clock Global::clock;
 
-float Time::deltaTime;
-const float Time::normalizeDeltaTime = 200;
+float Global::deltaTime;
+const float Global::normalizeDeltaTime = 1000;
 
-float Time::DeltaTime()
+float Global::DeltaTime()
 {
 	return deltaTime;
 }
 
-void Time::ClockUpdate()
+void Global::ClockUpdate()
 {
 	deltaTime = clock.restart().asSeconds() * normalizeDeltaTime;
 
-	//Debug::Log("DEBUG: Clock has been reset :" + std::to_string(deltaTime));
+	Debug::Log("DEBUG: Clock has been reset :" + std::to_string(deltaTime));
 
-	Coroutine::AddCoroutine(ClockUpdate);
+	Coroutine::AddCoroutine(
+		[]() {
+			Global::ClockUpdate();
+		}
+	);
 }

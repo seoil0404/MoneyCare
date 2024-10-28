@@ -20,24 +20,35 @@ namespace sf
 
 // Drawable Extentions -----------------------------------------------------------------------------------------------------
 
-	class Animationable
-	{
-	public:
-		virtual void MoveWithAnimation(sf::Vector2f) = 0;
-		virtual void ResizeWithAnimation(sf::Vector2f) = 0;
-	};
-
-	// This class should be created using dynamic allocation and must be destroyed through user-defined functions only.
+	// This class should be created using dynamic allocation with shared_ptr.
 	class RectangleShapeEx : public sf::RectangleShape, public std::enable_shared_from_this<RectangleShapeEx>
 	{
 	public:
 		static std::shared_ptr<RectangleShapeEx> Create(sf::Vector2f);
+
 		~RectangleShapeEx() {};
 		RectangleShapeEx(sf::Vector2f);
-	private:
-		
 
+		// this function process with an animation
+		void Translate(sf::Vector2f, float);
+		// this function process with an animation
+		void Resize(sf::Vector2f, float);
+
+		const float MAX_ANIMATION_SPEED_RATE = 100;
+
+	private:
 		void UpdateObject();
+		
+		sf::Vector2f position_animation;
+		float position_animation_speed_rate;
+
+		sf::Vector2f scale_animation;
+		float scale_animation_speed_rate;
+
+		void UpdateAnimation();
+
+		void UpdatePositionAnimation();
+		void UpdateScaleAnimation();
 	};
 
 	
