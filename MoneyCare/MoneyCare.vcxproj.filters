@@ -28,6 +28,9 @@
     <Filter Include="헤더 파일\Frontend">
       <UniqueIdentifier>{11e4cfd7-d0e1-4df1-8783-d59d37193b68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Frontend\Extentions">
+      <UniqueIdentifier>{6053f550-9735-4fe3-af1a-659f5a95610d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -69,8 +72,17 @@
     <ClCompile Include="ApplicationManaager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="Extentions.cpp">
-      <Filter>소스 파일\Frontend</Filter>
+    <ClCompile Include="RenderWindowEx.cpp">
+      <Filter>소스 파일\Frontend\Extentions</Filter>
+    </ClCompile>
+    <ClCompile Include="RectangleShapeEx.cpp">
+      <Filter>소스 파일\Frontend\Extentions</Filter>
+    </ClCompile>
+    <ClCompile Include="TextEx.cpp">
+      <Filter>소스 파일\Frontend\Extentions</Filter>
+    </ClCompile>
+    <ClCompile Include="ButtonShape.cpp">
+      <Filter>소스 파일\Frontend\Extentions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

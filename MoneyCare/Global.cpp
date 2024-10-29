@@ -16,7 +16,7 @@ void Global::ClockUpdate()
 {
 	deltaTime = clock.restart().asSeconds() * normalizeDeltaTime;
 
-	Debug::Log("DEBUG: Clock has been reset :" + std::to_string(deltaTime));
+	//Debug::Log("DEBUG: Clock has been reset :" + std::to_string(deltaTime));
 
 	Coroutine::AddCoroutine(
 		[]() {

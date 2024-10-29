@@ -4,33 +4,10 @@
 #include "DebugLog.h"
 #include "Global.h"
 
-// RenderWindowEx -----------------------------------------------------------------------------------------------------
-
-sf::RenderWindowEx::RenderWindowEx(
-    sf::VideoMode _VideoMode, std::string _ScreenName, sf::Uint32 style)
-    : RenderWindow(_VideoMode, _ScreenName, style)
-{
-    setScreenRatio(SCREEN_RATIO_X, SCREEN_RATIO_Y);
-    setFramerateLimit(sf::FRAME_LIMIT);
-    
-    Debug::Log("DEBUG: RenderWindowEx spawned");
-};
-
-void sf::RenderWindowEx::setScreenRatio(int ratioX, int ratioY)
-{
-    sf::FloatRect floatRect(0, 0, (float)ratioX, (float)ratioY);
-
-    sf::View view(floatRect);
-
-    RenderWindow::setView(view);
-}
-
-// RectangleShapeEx -----------------------------------------------------------------------------------------------------
-
 std::shared_ptr<sf::RectangleShapeEx> sf::RectangleShapeEx::Create(sf::Vector2f size, sf::Vector2f position)
 {
     std::shared_ptr<sf::RectangleShapeEx> tempObject(new sf::RectangleShapeEx(size, position));
-    
+
     tempObject->UpdateObject();
 
     return tempObject;
@@ -58,10 +35,10 @@ void sf::RectangleShapeEx::UpdateObject()
     WindowManager::window.draw(*this);
 
     Debug::Log("DEBUG: Object has been updated");
-    
+
     Coroutine::SafeAddCoroutine(
         static_cast<std::weak_ptr<sf::RectangleShapeEx>>(shared_from_this()),
-        [&](){UpdateObject();}
+        [&]() {UpdateObject();}
     );
 }
 
@@ -120,10 +97,7 @@ void sf::RectangleShapeEx::Translate(sf::Vector2f toPos, float speedRate)
 void sf::RectangleShapeEx::Resize(sf::Vector2f toScale, float speedRate)
 {
     scale_animation = toScale;
-    
+
     if (speedRate > MAX_ANIMATION_SPEED_RATE) speedRate = MAX_ANIMATION_SPEED_RATE;
     scale_animation_speed_rate = speedRate;
 }
-
-// ButtonShape -----------------------------------------------------------------------------------------------------
-

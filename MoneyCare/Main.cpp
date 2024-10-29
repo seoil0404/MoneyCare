@@ -25,6 +25,8 @@ int main()
 {
 	Global::ClockUpdate();
 
+	WindowManager::Initialize();
+
 	WindowManager::EventUpdate();
 	WindowManager::ClearWindow();
 	
@@ -40,8 +42,5 @@ int main()
 
 void Start()
 {
-	static std::shared_ptr<sf::RectangleShapeEx> a = sf::RectangleShapeEx::Create(sf::Vector2f(100, 100));
-	//a->setPosition(sf::Vector2f(800, 450));
-	a->Translate(sf::Vector2f(1600, 900), 3);
-	a->Resize(sf::Vector2f(5, 5), 3);
+	
 }

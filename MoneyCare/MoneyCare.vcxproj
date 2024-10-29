@@ -20,10 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ApplicationManaager.cpp" />
+    <ClCompile Include="ButtonShape.cpp" />
     <ClCompile Include="Category.cpp" />
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DebugLog.cpp" />
-    <ClCompile Include="Extentions.cpp" />
     <ClCompile Include="FromJson.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -31,6 +31,9 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Coroutine.cpp" />
+    <ClCompile Include="RectangleShapeEx.cpp" />
+    <ClCompile Include="RenderWindowEx.cpp" />
+    <ClCompile Include="TextEx.cpp" />
     <ClCompile Include="ToJson.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>

@@ -6,8 +6,28 @@
 sf::RenderWindowEx WindowManager::window;
 sf::Event WindowManager::eventState;
 
+bool WindowManager::is_cursor_on_button;
+
+sf::Cursor WindowManager::arrowCursor;
+sf::Cursor WindowManager::handCursor;
+
+sf::Cursor::Type WindowManager::currentCursorState;
+
+void WindowManager::Initialize()
+{
+	is_cursor_on_button = false;
+
+	arrowCursor.loadFromSystem(sf::Cursor::Arrow);
+	handCursor.loadFromSystem(sf::Cursor::Hand);
+
+	currentCursorState = sf::Cursor::Arrow;
+}
+
 void WindowManager::EventUpdate()
 {
+	// turn to empty value
+	eventState.type = sf::Event::Count;
+	
 	while ((window.pollEvent(eventState)))
 	{
 		if (eventState.type == sf::Event::Closed)
@@ -18,6 +38,8 @@ void WindowManager::EventUpdate()
 			ApplicationManager::Quit();
 		}
 	}
+
+	CursorStateUpdate();
 
 	//Debug::Log("DEBUG: EventUpdate function has been executed");
 
@@ -32,7 +54,7 @@ void WindowManager::ClearWindow()
 {
 	window.clear();
 
-	Debug::Log("DEBUG: ClearWindow function has been executed");
+	//Debug::Log("DEBUG: ClearWindow function has been executed");
 
 	Coroutine::AddCoroutine(
 		[&]() {
@@ -52,4 +74,22 @@ void WindowManager::DisplayWindow()
 			DisplayWindow();
 		}
 	);
+}
+
+void WindowManager::CursorStateUpdate()
+{
+	if (is_cursor_on_button)
+	{
+		is_cursor_on_button = false;
+		if (currentCursorState != sf::Cursor::Type::Hand)
+		{
+			window.setMouseCursor(handCursor);
+			currentCursorState = sf::Cursor::Type::Hand;
+		}
+	}
+	else if(currentCursorState != sf::Cursor::Type::Arrow)
+	{
+		window.setMouseCursor(arrowCursor);
+		currentCursorState = sf::Cursor::Type::Arrow;
+	}
 }

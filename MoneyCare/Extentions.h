@@ -6,11 +6,6 @@
 
 namespace sf
 {
-	const int SCREEN_RATIO_X = 1600;
-	const int SCREEN_RATIO_Y = 900;
-
-	const int FRAME_LIMIT = 144;
-
 	class RenderWindowEx : public sf::RenderWindow
 	{
 	public:
@@ -19,6 +14,12 @@ namespace sf
 			std::string _ScreenName = "MoneyCare",
 			sf::Uint32 style = sf::Style::Default);
 		void setScreenRatio(int, int);
+
+	private:
+		const int SCREEN_RATIO_X = 1600;
+		const int SCREEN_RATIO_Y = 900;
+
+		const int FRAME_LIMIT = 144;
 	};
 
 // Drawable Extentions -----------------------------------------------------------------------------------------------------
@@ -39,9 +40,15 @@ namespace sf
 		const float MAX_ANIMATION_SPEED_RATE = 100;
 
 	protected:
+		template<typename T>
+		static std::weak_ptr<T> get_weak(T* object) {
+			return static_cast<std::weak_ptr<T>>(std::static_pointer_cast<T>(object->shared_from_this()));
+		}
+		
+
 		RectangleShapeEx(sf::Vector2f, sf::Vector2f);
 
-		void UpdateAnimation();
+		virtual void UpdateAnimation();
 
 		virtual void UpdateObject();
 
@@ -56,6 +63,37 @@ namespace sf
 		void UpdateScaleAnimation();
 	};
 
+// Drawable Extentions -----------------------------------------------------------------------------------------------------
+
+	// This class should be created using dynamic allocation with shared_ptr.
+	class TextEx : public sf::Text, public std::enable_shared_from_this<TextEx>
+	{
+	public:
+		static std::shared_ptr<TextEx> Create(sf::Font, std::string, unsigned int, sf::Vector2f = sf::Vector2f(0, 0));
+
+		~TextEx() {};
+
+		// this function process with an animation
+		void Translate(sf::Vector2f, float);
+
+		const float MAX_ANIMATION_SPEED_RATE = 100;
+
+	protected:
+		TextEx(sf::Font, std::string, unsigned int, sf::Vector2f);
+
+		virtual void UpdateAnimation();
+
+		virtual void UpdateObject();
+
+	private:
+		sf::Vector2f position_animation;
+		float position_animation_speed_rate;
+
+		void UpdatePositionAnimation();
+	};
+
+// Drawable Extentions -----------------------------------------------------------------------------------------------------
+
 	class ButtonShape : public RectangleShapeEx
 	{
 	public:
@@ -63,9 +101,15 @@ namespace sf
 		
 		~ButtonShape() {};
 
+	protected:
+		void UpdateObject() override;
+
 	private:
-		ButtonShape(sf::Vector2f, sf::Vector2f);
-		
+		ButtonShape(std::function<void()>, sf::Vector2f, sf::Vector2f);
+
+		void CatchEvent();
+
+		std::function<void()> eventFunction;
 	};
 }
 
