@@ -48,8 +48,12 @@ void sf::ButtonShape::CatchEvent()
 			enter_EventFunction();
 		}
 
-		if (WindowManager::getEventState().type == sf::Event::MouseButtonPressed) {
-			click_EventFunction();
+		if (WindowManager::getEventState().type == sf::Event::MouseButtonPressed)
+		{
+			if (WindowManager::getEventState().mouseButton.button == sf::Mouse::Button::Left)
+			{
+				click_EventFunction();
+			}
 		}
 	}
 	else if (isHovering == true)

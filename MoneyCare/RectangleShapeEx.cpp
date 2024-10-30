@@ -87,7 +87,7 @@ void sf::RectangleShapeEx::UpdateScaleAnimation()
 
 void sf::RectangleShapeEx::Translate(sf::Vector2f toPos, float speedRate)
 {
-    position_animation = getPosition() + toPos;
+    position_animation = position_animation + toPos;
 
     if (speedRate > MAX_ANIMATION_SPEED_RATE) speedRate = MAX_ANIMATION_SPEED_RATE;
     position_animation_speed_rate = speedRate;
