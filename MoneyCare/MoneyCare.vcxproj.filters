@@ -90,7 +90,7 @@
     <ClCompile Include="MainUI.cpp">
       <Filter>소스 파일\Frontend\Scenes</Filter>
     </ClCompile>
-    <ClCompile Include="Fonts.cpp">
+    <ClCompile Include="Loads.cpp">
       <Filter>소스 파일\Frontend</Filter>
     </ClCompile>
   </ItemGroup>
@@ -125,7 +125,7 @@
     <ClInclude Include="Scene.h">
       <Filter>헤더 파일\Frontend</Filter>
     </ClInclude>
-    <ClInclude Include="Fonts.h">
+    <ClInclude Include="Loads.h">
       <Filter>헤더 파일\Frontend</Filter>
     </ClInclude>
   </ItemGroup>

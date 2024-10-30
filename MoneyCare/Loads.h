@@ -18,4 +18,33 @@ namespace sf
 		static sf::Font SemiBold;
 		static sf::Font Thin;
 	};
+
+	class TextureManager
+	{
+	private:
+		struct AddType
+		{
+
+		};
+		struct ViewType
+		{
+
+		};
+		struct CategoryType
+		{
+			sf::Texture item;
+		};
+		struct BudgetType
+		{
+
+		};
+
+	public:
+		static void Initialize();
+
+		static AddType Add;
+		static ViewType View;
+		static CategoryType Category;
+		static BudgetType Budget;
+	};
 }

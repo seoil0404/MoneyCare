@@ -18,7 +18,7 @@
 #include "Global.h"
 #include "DebugLog.h"
 #include "WindowManager.h"
-#include "Fonts.h"
+#include "Loads.h"
 #include "Scene.h"
 
 void Start();
@@ -31,6 +31,7 @@ int main()
 
 	WindowManager::Initialize();
 	sf::FontManager::Initialize();
+	sf::TextureManager::Initialize();
 
 	WindowManager::EventUpdate();
 	WindowManager::ClearWindow();

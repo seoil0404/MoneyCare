@@ -1,11 +1,11 @@
-#include "Fonts.h"
+#include "Loads.h"
 #include "DebugLog.h"
 
 namespace sf
 {
 	void FontManager::Initialize()
 	{
-		if (!Black.loadFromFile("./Asset/Fonts/Black.ttf"));
+		Black.loadFromFile("./Asset/Fonts/Black.ttf");
 		Bold.loadFromFile("./Asset/Fonts/Bold.ttf");
 		ExtraBold.loadFromFile("./Asset/Fonts/ExtraBold.ttf");
 		ExtraLight.loadFromFile("./Asset/Fonts/ExtraLight.ttf");
@@ -25,4 +25,14 @@ namespace sf
 	Font FontManager::Regular;
 	Font FontManager::SemiBold;
 	Font FontManager::Thin;
+
+	void TextureManager::Initialize()
+	{
+		Category.item.loadFromFile("./Asset/Images/Category/item.png");
+	}
+
+	TextureManager::AddType TextureManager::Add;
+	TextureManager::ViewType TextureManager::View;
+	TextureManager::CategoryType TextureManager::Category;
+	TextureManager::BudgetType TextureManager::Budget;
 }

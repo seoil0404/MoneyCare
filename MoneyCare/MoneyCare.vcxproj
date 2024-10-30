@@ -24,7 +24,7 @@
     <ClCompile Include="Category.cpp" />
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DebugLog.cpp" />
-    <ClCompile Include="Fonts.cpp" />
+    <ClCompile Include="Loads.cpp" />
     <ClCompile Include="FromJson.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -45,7 +45,7 @@
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="DebugLog.h" />
     <ClInclude Include="Extentions.h" />
-    <ClInclude Include="Fonts.h" />
+    <ClInclude Include="Loads.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Coroutine.h" />
     <ClInclude Include="Json.h" />
