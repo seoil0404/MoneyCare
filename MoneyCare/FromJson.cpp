@@ -1,9 +1,10 @@
 #include "Json.h"
+#include "DebugLog.h"
 
 void JsonManager::FromJson(const nlohmann::json& json, std::vector<Layer>& layerData)
 {
 	layerData.resize(json.size());
-
+	
 	for (int index = 0; index < json.size(); index++) {
 		FromJson(json[index], layerData[index]);
 	}

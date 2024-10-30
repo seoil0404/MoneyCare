@@ -24,6 +24,7 @@
     <ClCompile Include="Category.cpp" />
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DebugLog.cpp" />
+    <ClCompile Include="Fonts.cpp" />
     <ClCompile Include="FromJson.cpp" />
     <ClCompile Include="Global.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -31,6 +32,7 @@
     <ClCompile Include="Layer.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Coroutine.cpp" />
+    <ClCompile Include="MainUI.cpp" />
     <ClCompile Include="RectangleShapeEx.cpp" />
     <ClCompile Include="RenderWindowEx.cpp" />
     <ClCompile Include="TextEx.cpp" />
@@ -43,9 +45,11 @@
     <ClInclude Include="DataManager.h" />
     <ClInclude Include="DebugLog.h" />
     <ClInclude Include="Extentions.h" />
+    <ClInclude Include="Fonts.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Coroutine.h" />
     <ClInclude Include="Json.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="WindowManager.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -144,6 +148,9 @@
       <AdditionalLibraryDirectories>$(ProjectDir)Libraries\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-main-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)Asset*.*" "$(TargetDir)Asset" /E /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -165,6 +172,9 @@
       <AdditionalLibraryDirectories>$(ProjectDir)Libraries\SFML\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-main-d.lib;sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)Asset*.*" "$(TargetDir)Asset" /E /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -5,7 +5,7 @@
 void JsonManager::LoadData(std::vector<Layer>& layer, std::vector<Category>& category)
 {
 	nlohmann::json json = LoadJsonFile();
-
+	
 	FromJson(json[userUsageData()], layer);
 	FromJson(json[userCategoryData()], category);
 
@@ -30,9 +30,18 @@ nlohmann::json JsonManager::LoadJsonFile()
 
 	std::ifstream file(jsonFilePath());
 
+	if (!file.is_open())
+	{
+		std::ofstream makeFile(jsonFilePath());
+		JsonManager::SaveData(DataManager::getAllLayerRef(), CategoryManager::getAllCategoryDataRef());
+		makeFile.close();
+		
+		file.open(jsonFilePath());
+	}
+	
 	file >> json;
 	file.close();
-
+	
 	return json;
 }
 

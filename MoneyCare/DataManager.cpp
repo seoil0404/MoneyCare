@@ -41,5 +41,5 @@ bool DataManager::IsEmpty()
 
 int DataManager::getLayerDataSize()
 {
-	return layerData.size();
+	return (int)layerData.size();
 }

@@ -4,18 +4,22 @@
 #include "DebugLog.h"
 #include "Global.h"
 
-std::shared_ptr<sf::ButtonShape> sf::ButtonShape::Create(std::function<void()> _eventFunction, sf::Vector2f size, sf::Vector2f position)
+std::shared_ptr<sf::ButtonShape> sf::ButtonShape::Create(sf::Vector2f size, sf::Vector2f position)
 {
-	std::shared_ptr<sf::ButtonShape> tempObject(new ButtonShape(_eventFunction, size, position));
+	std::shared_ptr<sf::ButtonShape> tempObject(new ButtonShape(size, position));
 
 	tempObject->UpdateObject();
 
 	return tempObject;
 }
 
-sf::ButtonShape::ButtonShape(std::function<void()> _eventFunction, sf::Vector2f size, sf::Vector2f position) : RectangleShapeEx(size, position)
+sf::ButtonShape::ButtonShape(sf::Vector2f size, sf::Vector2f position) : RectangleShapeEx(size, position)
 {
-	eventFunction = _eventFunction;
+	isHovering = false;
+
+	click_EventFunction = []() {};
+	enter_EventFunction = []() {};
+	exit_EventFunction = []() {};
 }
 
 void sf::ButtonShape::UpdateObject()
@@ -38,9 +42,34 @@ void sf::ButtonShape::CatchEvent()
 	if (getGlobalBounds().contains(mousePos))
 	{
 		WindowManager::ChangeCursorToHand();
+		if (isHovering == false)
+		{
+			isHovering = true;
+			enter_EventFunction();
+		}
 
 		if (WindowManager::getEventState().type == sf::Event::MouseButtonPressed) {
-			eventFunction();
+			click_EventFunction();
 		}
 	}
+	else if (isHovering == true)
+	{
+		isHovering = false;
+		exit_EventFunction();
+	}
+}
+
+void sf::ButtonShape::setClickEvent(std::function<void()> func)
+{
+	click_EventFunction = func;
+}
+
+void sf::ButtonShape::setEnterEvent(std::function<void()> func)
+{
+	enter_EventFunction = func;
+}
+
+void sf::ButtonShape::setExitEvent(std::function<void()> func)
+{
+	exit_EventFunction = func;
 }

@@ -31,6 +31,9 @@
     <Filter Include="소스 파일\Frontend\Extentions">
       <UniqueIdentifier>{6053f550-9735-4fe3-af1a-659f5a95610d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\Frontend\Scenes">
+      <UniqueIdentifier>{b5449c2c-639e-40c6-b686-37869afea961}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -84,6 +87,12 @@
     <ClCompile Include="ButtonShape.cpp">
       <Filter>소스 파일\Frontend\Extentions</Filter>
     </ClCompile>
+    <ClCompile Include="MainUI.cpp">
+      <Filter>소스 파일\Frontend\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Fonts.cpp">
+      <Filter>소스 파일\Frontend</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Coroutine.h">
@@ -111,6 +120,12 @@
       <Filter>헤더 파일\Frontend</Filter>
     </ClInclude>
     <ClInclude Include="WindowManager.h">
+      <Filter>헤더 파일\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>헤더 파일\Frontend</Filter>
+    </ClInclude>
+    <ClInclude Include="Fonts.h">
       <Filter>헤더 파일\Frontend</Filter>
     </ClInclude>
   </ItemGroup>

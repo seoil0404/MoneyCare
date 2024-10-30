@@ -52,7 +52,7 @@ void WindowManager::EventUpdate()
 
 void WindowManager::ClearWindow()
 {
-	window.clear();
+	window.clear(sf::Color::White);
 
 	//Debug::Log("DEBUG: ClearWindow function has been executed");
 

@@ -18,14 +18,19 @@
 #include "Global.h"
 #include "DebugLog.h"
 #include "WindowManager.h"
+#include "Fonts.h"
+#include "Scene.h"
 
 void Start();
+
+void TestDataSettings();
 
 int main()
 {
 	Global::ClockUpdate();
 
 	WindowManager::Initialize();
+	sf::FontManager::Initialize();
 
 	WindowManager::EventUpdate();
 	WindowManager::ClearWindow();
@@ -42,5 +47,23 @@ int main()
 
 void Start()
 {
+	JsonManager::LoadData(DataManager::getAllLayerRef(), CategoryManager::getAllCategoryDataRef());
 	
+	static MainUI mainUI;
+}
+
+void TestDataSettings()
+{
+	CategoryManager::AddCategory(Category("Category1"));
+	CategoryManager::AddCategory(Category("Category2"));
+	CategoryManager::AddCategory(Category("Category3"));
+
+	DataManager::AddLayer();
+	
+	DataManager::getRecentLayer().AddItem(Item(100, "Item1", CategoryManager::getAllCategoryDataRef()[2]));
+	DataManager::getRecentLayer().AddItem(Item(100, "Item2", CategoryManager::getAllCategoryDataRef()[1]));
+	DataManager::getRecentLayer().AddItem(Item(100, "Item3", CategoryManager::getAllCategoryDataRef()[0]));
+
+	DataManager::getRecentLayer().setBudgetValue(Category("Category1"), 1000);
+	DataManager::getRecentLayer().setBudgetValue(Category("Category1"), 3000);
 }

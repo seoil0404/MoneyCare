@@ -32,12 +32,11 @@ sf::RectangleShapeEx::RectangleShapeEx(sf::Vector2f size, sf::Vector2f position)
 void sf::RectangleShapeEx::UpdateObject()
 {
     UpdateAnimation();
+
     WindowManager::window.draw(*this);
 
-    Debug::Log("DEBUG: Object has been updated");
-
     Coroutine::SafeAddCoroutine(
-        static_cast<std::weak_ptr<sf::RectangleShapeEx>>(shared_from_this()),
+        get_weak(this),
         [&]() {UpdateObject();}
     );
 }
@@ -88,7 +87,7 @@ void sf::RectangleShapeEx::UpdateScaleAnimation()
 
 void sf::RectangleShapeEx::Translate(sf::Vector2f toPos, float speedRate)
 {
-    position_animation = toPos;
+    position_animation = getPosition() + toPos;
 
     if (speedRate > MAX_ANIMATION_SPEED_RATE) speedRate = MAX_ANIMATION_SPEED_RATE;
     position_animation_speed_rate = speedRate;

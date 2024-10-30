@@ -4,20 +4,22 @@
 #include "DebugLog.h"
 #include "Global.h"
 
-std::shared_ptr<sf::TextEx> sf::TextEx::Create(sf::Font font, std::string contents, unsigned int size, sf::Vector2f position)
+std::shared_ptr<sf::TextEx> sf::TextEx::Create(sf::Font& font, std::wstring contents, unsigned int size, sf::Vector2f position)
 {
     std::shared_ptr<sf::TextEx> tempObject(new sf::TextEx(font, contents, size, position));
-
+    
     tempObject->UpdateObject();
 
     return tempObject;
 }
 
-sf::TextEx::TextEx(sf::Font font, std::string contents, unsigned int size, sf::Vector2f position)
+sf::TextEx::TextEx(sf::Font& font, std::wstring contents, unsigned int size, sf::Vector2f position)
 {
     
     this->setCharacterSize(size);
     this->setFont(font);
+
+    this->setString(contents);
 
     // set origin to middle of the object
     this->setOrigin(sf::Vector2f(this->getGlobalBounds().width / 2, this->getGlobalBounds().height / 2));
@@ -33,12 +35,14 @@ sf::TextEx::TextEx(sf::Font font, std::string contents, unsigned int size, sf::V
 void sf::TextEx::UpdateObject()
 {
     UpdateAnimation();
+
     WindowManager::window.draw(*this);
 
     Coroutine::SafeAddCoroutine(
-        static_cast<std::weak_ptr<sf::TextEx>>(shared_from_this()),
+        get_weak(this),
         [&]() {UpdateObject();}
     );
+    
 }
 
 void sf::TextEx::UpdateAnimation()
@@ -48,7 +52,7 @@ void sf::TextEx::UpdateAnimation()
 
 void sf::TextEx::Translate(sf::Vector2f toPos, float speedRate)
 {
-    position_animation = toPos;
+    position_animation = getPosition() + toPos;
 
     if (speedRate > MAX_ANIMATION_SPEED_RATE) speedRate = MAX_ANIMATION_SPEED_RATE;
     position_animation_speed_rate = speedRate;

@@ -12,7 +12,7 @@ namespace sf
 		RenderWindowEx(
 			sf::VideoMode _VideoMode = sf::VideoMode::getDesktopMode(),
 			std::string _ScreenName = "MoneyCare",
-			sf::Uint32 style = sf::Style::Default);
+			sf::Uint32 style = sf::Style::None);
 		void setScreenRatio(int, int);
 
 	private:
@@ -69,7 +69,7 @@ namespace sf
 	class TextEx : public sf::Text, public std::enable_shared_from_this<TextEx>
 	{
 	public:
-		static std::shared_ptr<TextEx> Create(sf::Font, std::string, unsigned int, sf::Vector2f = sf::Vector2f(0, 0));
+		static std::shared_ptr<TextEx> Create(sf::Font&, std::wstring, unsigned int, sf::Vector2f = sf::Vector2f(0, 0));
 
 		~TextEx() {};
 
@@ -79,7 +79,12 @@ namespace sf
 		const float MAX_ANIMATION_SPEED_RATE = 100;
 
 	protected:
-		TextEx(sf::Font, std::string, unsigned int, sf::Vector2f);
+		TextEx(sf::Font&, std::wstring, unsigned int, sf::Vector2f);
+
+		template<typename T>
+		static std::weak_ptr<T> get_weak(T* object) {
+			return static_cast<std::weak_ptr<T>>(std::static_pointer_cast<T>(object->shared_from_this()));
+		}
 
 		virtual void UpdateAnimation();
 
@@ -97,19 +102,27 @@ namespace sf
 	class ButtonShape : public RectangleShapeEx
 	{
 	public:
-		static std::shared_ptr<ButtonShape> Create(std::function<void()>, sf::Vector2f, sf::Vector2f = sf::Vector2f(0, 0));
+		static std::shared_ptr<ButtonShape> Create(sf::Vector2f, sf::Vector2f = sf::Vector2f(0, 0));
 		
+		void setClickEvent(std::function<void()>);
+		void setEnterEvent(std::function<void()>);
+		void setExitEvent(std::function<void()>);
+
 		~ButtonShape() {};
 
 	protected:
 		void UpdateObject() override;
 
 	private:
-		ButtonShape(std::function<void()>, sf::Vector2f, sf::Vector2f);
+		ButtonShape(sf::Vector2f, sf::Vector2f);
 
 		void CatchEvent();
 
-		std::function<void()> eventFunction;
+		bool isHovering;
+
+		std::function<void()> click_EventFunction;
+		std::function<void()> enter_EventFunction;
+		std::function<void()> exit_EventFunction;
+
 	};
 }
-
