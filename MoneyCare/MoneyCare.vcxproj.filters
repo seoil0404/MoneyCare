@@ -54,9 +54,6 @@
     <ClCompile Include="Layer.cpp">
       <Filter>소스 파일\Backend</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>소스 파일\Backend</Filter>
-    </ClCompile>
     <ClCompile Include="JsonManager.cpp">
       <Filter>소스 파일\Backend\Json</Filter>
     </ClCompile>
@@ -92,6 +89,24 @@
     </ClCompile>
     <ClCompile Include="Loads.cpp">
       <Filter>소스 파일\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>소스 파일\Frontend</Filter>
+    </ClCompile>
+    <ClCompile Include="AddScene.cpp">
+      <Filter>소스 파일\Frontend\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewScene.cpp">
+      <Filter>소스 파일\Frontend\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="CategoryScene.cpp">
+      <Filter>소스 파일\Frontend\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="BudgetScene.cpp">
+      <Filter>소스 파일\Frontend\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>소스 파일\Backend</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

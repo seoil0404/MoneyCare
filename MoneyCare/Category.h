@@ -27,6 +27,7 @@ public:
 
 	static std::vector<Category>& getAllCategoryDataRef();
 	static const std::vector<Category>& getAllCategoryData();
+	static Category getNextCategory(Category);
 
 	static int CategoryDataSize() { return (int)categoryData.size(); };
 	

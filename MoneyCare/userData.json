@@ -1,4 +1,48 @@
 {
-    "userCategoryData": null,
-    "userUsageData": null
+    "userCategoryData": [
+        {
+            "category": "Category1"
+        },
+        {
+            "category": "Category2"
+        },
+        {
+            "category": "Category3"
+        }
+    ],
+    "userUsageData": [
+        {
+            "budgetData": [
+                {
+                    "amount": 0,
+                    "category": "Category3"
+                },
+                {
+                    "amount": 0,
+                    "category": "Category2"
+                },
+                {
+                    "amount": 0,
+                    "category": "Category1"
+                }
+            ],
+            "itemData": [
+                {
+                    "amount": 100,
+                    "category": "Category3",
+                    "usageName": "Item1"
+                },
+                {
+                    "amount": -1000,
+                    "category": "Category2",
+                    "usageName": "Item2"
+                },
+                {
+                    "amount": 100000,
+                    "category": "Category1",
+                    "usageName": "Item3"
+                }
+            ]
+        }
+    ]
 }

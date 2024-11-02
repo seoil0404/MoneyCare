@@ -57,3 +57,19 @@ void CategoryManager::DeleteCategory(const Category& category)
 		}
 	}
 }
+
+Category CategoryManager::getNextCategory(Category category)
+{
+	for (int index = 0; index < categoryData.size(); index++)
+	{
+		if (categoryData[index] == category)
+		{
+			if (index + 1 < categoryData.size())
+			{
+				return categoryData[index + 1];
+			}
+			else return categoryData.front();
+		}
+	}
+	return categoryData.front();
+}

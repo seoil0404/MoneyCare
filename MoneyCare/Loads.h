@@ -24,7 +24,14 @@ namespace sf
 	private:
 		struct AddType
 		{
-
+			sf::Texture Add;
+			sf::Texture AddItem;
+			sf::Texture AddLayer;
+			sf::Texture Input;
+			sf::Texture PositiveItem;
+			sf::Texture NegativeItem;
+			sf::Texture Delete;
+			sf::Texture LayerLine;
 		};
 		struct ViewType
 		{
@@ -32,7 +39,10 @@ namespace sf
 		};
 		struct CategoryType
 		{
-			sf::Texture item;
+			sf::Texture Item;
+			sf::Texture Input;
+			sf::Texture Add;
+			sf::Texture Delete;
 		};
 		struct BudgetType
 		{

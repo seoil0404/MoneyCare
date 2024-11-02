@@ -16,8 +16,10 @@ std::shared_ptr<sf::ButtonShape> sf::ButtonShape::Create(sf::Vector2f size, sf::
 sf::ButtonShape::ButtonShape(sf::Vector2f size, sf::Vector2f position) : RectangleShapeEx(size, position)
 {
 	isHovering = false;
+	isClicked = false;
 
 	click_EventFunction = []() {};
+	exitClick_EventFunctiom = []() {};
 	enter_EventFunction = []() {};
 	exit_EventFunction = []() {};
 }
@@ -50,16 +52,24 @@ void sf::ButtonShape::CatchEvent()
 
 		if (WindowManager::getEventState().type == sf::Event::MouseButtonPressed)
 		{
-			if (WindowManager::getEventState().mouseButton.button == sf::Mouse::Button::Left)
-			{
-				click_EventFunction();
-			}
+			isClicked = true;
+			click_EventFunction();
 		}
 	}
 	else if (isHovering == true)
 	{
 		isHovering = false;
 		exit_EventFunction();
+	}
+
+	bool flag1 = WindowManager::getEventState().type == sf::Event::MouseButtonPressed;
+	bool flag2 = !getGlobalBounds().contains(mousePos);
+	bool flag3 = isClicked == true;
+
+	if (flag1 && flag2 && flag3)
+	{
+		isClicked = false;
+		exitClick_EventFunctiom();
 	}
 }
 
@@ -76,4 +86,9 @@ void sf::ButtonShape::setEnterEvent(std::function<void()> func)
 void sf::ButtonShape::setExitEvent(std::function<void()> func)
 {
 	exit_EventFunction = func;
+}
+
+void sf::ButtonShape::setExitClickEvent(std::function<void()> func)
+{
+	exitClick_EventFunctiom = func;
 }

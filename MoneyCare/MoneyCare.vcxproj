@@ -19,9 +19,12 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AddScene.cpp" />
     <ClCompile Include="ApplicationManaager.cpp" />
+    <ClCompile Include="BudgetScene.cpp" />
     <ClCompile Include="ButtonShape.cpp" />
     <ClCompile Include="Category.cpp" />
+    <ClCompile Include="CategoryScene.cpp" />
     <ClCompile Include="DataManager.cpp" />
     <ClCompile Include="DebugLog.cpp" />
     <ClCompile Include="Loads.cpp" />
@@ -35,8 +38,10 @@
     <ClCompile Include="MainUI.cpp" />
     <ClCompile Include="RectangleShapeEx.cpp" />
     <ClCompile Include="RenderWindowEx.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="TextEx.cpp" />
     <ClCompile Include="ToJson.cpp" />
+    <ClCompile Include="ViewScene.cpp" />
     <ClCompile Include="WindowManager.cpp" />
   </ItemGroup>
   <ItemGroup>

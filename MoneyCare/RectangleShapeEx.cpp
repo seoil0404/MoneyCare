@@ -34,7 +34,7 @@ void sf::RectangleShapeEx::UpdateObject()
     UpdateAnimation();
 
     WindowManager::window.draw(*this);
-
+    
     Coroutine::SafeAddCoroutine(
         get_weak(this),
         [&]() {UpdateObject();}

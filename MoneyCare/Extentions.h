@@ -69,7 +69,7 @@ namespace sf
 	class TextEx : public sf::Text, public std::enable_shared_from_this<TextEx>
 	{
 	public:
-		static std::shared_ptr<TextEx> Create(sf::Font&, std::wstring, unsigned int, sf::Vector2f = sf::Vector2f(0, 0));
+		static std::shared_ptr<TextEx> Create(sf::Font&, std::string, unsigned int, sf::Vector2f = sf::Vector2f(0, 0));
 
 		~TextEx() {};
 
@@ -79,7 +79,7 @@ namespace sf
 		const float MAX_ANIMATION_SPEED_RATE = 100;
 
 	protected:
-		TextEx(sf::Font&, std::wstring, unsigned int, sf::Vector2f);
+		TextEx(sf::Font&, std::string, unsigned int, sf::Vector2f);
 
 		template<typename T>
 		static std::weak_ptr<T> get_weak(T* object) {
@@ -105,6 +105,7 @@ namespace sf
 		static std::shared_ptr<ButtonShape> Create(sf::Vector2f, sf::Vector2f = sf::Vector2f(0, 0));
 		
 		void setClickEvent(std::function<void()>);
+		void setExitClickEvent(std::function<void()>);
 		void setEnterEvent(std::function<void()>);
 		void setExitEvent(std::function<void()>);
 
@@ -116,11 +117,14 @@ namespace sf
 	private:
 		ButtonShape(sf::Vector2f, sf::Vector2f);
 
+		// It catches and process all click and hover event functions.
 		void CatchEvent();
 
 		bool isHovering;
+		bool isClicked;
 
 		std::function<void()> click_EventFunction;
+		std::function<void()> exitClick_EventFunctiom;
 		std::function<void()> enter_EventFunction;
 		std::function<void()> exit_EventFunction;
 

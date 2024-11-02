@@ -27,18 +27,20 @@ void TestDataSettings();
 
 int main()
 {
+	JsonManager::LoadData(DataManager::getAllLayerRef(), CategoryManager::getAllCategoryDataRef());
+
 	Global::ClockUpdate();
 
 	WindowManager::Initialize();
 	sf::FontManager::Initialize();
 	sf::TextureManager::Initialize();
-
+	
 	WindowManager::EventUpdate();
-	WindowManager::ClearWindow();
 	
 	Start();
 	
 	WindowManager::DisplayWindow();
+	WindowManager::ClearWindow();
 	
 	while (true)
 	{
@@ -48,8 +50,8 @@ int main()
 
 void Start()
 {
-	JsonManager::LoadData(DataManager::getAllLayerRef(), CategoryManager::getAllCategoryDataRef());
-	
+	SceneManager::Initialize();
+
 	static MainUI mainUI;
 }
 

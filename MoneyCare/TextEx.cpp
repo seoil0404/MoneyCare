@@ -4,7 +4,7 @@
 #include "DebugLog.h"
 #include "Global.h"
 
-std::shared_ptr<sf::TextEx> sf::TextEx::Create(sf::Font& font, std::wstring contents, unsigned int size, sf::Vector2f position)
+std::shared_ptr<sf::TextEx> sf::TextEx::Create(sf::Font& font, std::string contents, unsigned int size, sf::Vector2f position)
 {
     std::shared_ptr<sf::TextEx> tempObject(new sf::TextEx(font, contents, size, position));
     
@@ -13,7 +13,7 @@ std::shared_ptr<sf::TextEx> sf::TextEx::Create(sf::Font& font, std::wstring cont
     return tempObject;
 }
 
-sf::TextEx::TextEx(sf::Font& font, std::wstring contents, unsigned int size, sf::Vector2f position)
+sf::TextEx::TextEx(sf::Font& font, std::string contents, unsigned int size, sf::Vector2f position)
 {
     
     this->setCharacterSize(size);

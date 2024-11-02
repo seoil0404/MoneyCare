@@ -32,6 +32,7 @@ nlohmann::json JsonManager::LoadJsonFile()
 
 	if (!file.is_open())
 	{
+		Debug::Log("DEBUG: No file!");
 		std::ofstream makeFile(jsonFilePath());
 		JsonManager::SaveData(DataManager::getAllLayerRef(), CategoryManager::getAllCategoryDataRef());
 		makeFile.close();
