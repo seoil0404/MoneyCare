@@ -1,6 +1,7 @@
 #pragma once
 #include <memory>
 #include "Extentions.h"
+#include "DataManager.h"
 
 enum class SceneType
 {
@@ -16,6 +17,7 @@ class MainUI
 {
 public:
 	MainUI();
+
 private:
 	SceneType type;
 	std::shared_ptr<sf::RectangleShapeEx> backGround;
@@ -60,10 +62,14 @@ class AddScene : public Scene
 {
 public:
 	AddScene();
-	void Translate(sf::Vector2f, float);
-	void ScrollTranslate(sf::Vector2f, float);
 	~AddScene() {};
+
+	void Translate(sf::Vector2f, float);
+	
+	void ScrollTranslate(sf::Vector2f, float);
+	
 	void setScroll();
+
 private:
 	void PrintScroll();
 
@@ -117,8 +123,11 @@ class CategoryScene : public Scene
 public:
 	CategoryScene();
 	~CategoryScene() {};
+
 	void Translate(sf::Vector2f, float);
+	
 	void setScroll();
+
 private:
 	std::shared_ptr<sf::TextEx> title;
 
@@ -139,7 +148,34 @@ private:
 class BudgetScene : public Scene
 {
 public:
+	BudgetScene();
+
 	void Translate(sf::Vector2f, float);
+
+	void ScrollTranslate(sf::Vector2f, float);
+
+	void setScroll();
+
+private:
+	void PrintScroll();
+
+	std::shared_ptr<sf::TextEx> title;
+
+	std::shared_ptr<sf::TextEx> amountText;
+	std::shared_ptr<sf::ButtonShape> amountInputButton;
+	std::shared_ptr<sf::TextEx> amountInputField;
+
+	std::shared_ptr<sf::TextEx> categoryText;
+	std::shared_ptr<sf::ButtonShape> categoryInputButton;
+	std::shared_ptr<sf::TextEx> categoryInputField;
+
+	std::shared_ptr<sf::ButtonShape> addButton;
+
+	std::vector<std::vector<std::pair<std::shared_ptr<sf::ButtonShape>, std::shared_ptr<sf::TextEx>>>> view;
+	std::vector<std::shared_ptr<sf::RectangleShapeEx>> viewLayerLine;
+
+	void Initialize();
+	void PrintField(Layer&);
 };
 
 // SceneManager -------------------------------------------------------------------------------------

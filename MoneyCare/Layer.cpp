@@ -45,7 +45,7 @@ void Layer::setBudgetValue(Category category, int value)
 	}
 	else
 	{
-		for (Budget index : budgetData)
+		for (Budget& index : budgetData)
 		{
 			if (index.getCategory() == category)
 			{
@@ -85,4 +85,16 @@ std::pair<int, int> Layer::getTotalAmountInCategory(const Category& category)
 	}
 
 	return std::pair<int, int>(positiveAmount, negativeAmount);
+}
+
+Budget Layer::getNextBudget(Category category)
+{
+	for (int index = 0; index < budgetData.size() - 1; index++)
+	{
+		if (category == budgetData[index].getCategory())
+		{
+			return budgetData[index + 1];
+		}
+	}
+	return budgetData.front();
 }

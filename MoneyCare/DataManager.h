@@ -65,6 +65,8 @@ public:
 
 	std::vector<Item>& getItemDataRef() { return itemData; };
 	std::vector<Budget>& getBudgetDataRef() { return budgetData; };
+	
+	Budget getNextBudget(Category);
 
 protected:
 	bool CheckCategoryAllocation(Category);

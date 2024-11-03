@@ -41,6 +41,12 @@ namespace sf
 		Category.Input.loadFromFile("./Asset/Images/Category/Input.png");
 		Category.Add.loadFromFile("./Asset/Images/Category/Add.png");
 		Category.Delete.loadFromFile("./Asset/Images/Category/Delete.png");
+
+		Budget.PositiveItem.loadFromFile("./Asset/Images/Budget/PositiveItem.png");
+		Budget.NegativeItem.loadFromFile("./Asset/Images/Budget/NegativeItem.png");
+		Budget.PositiveSelectedItem.loadFromFile("./Asset/Images/Budget/PositiveSelectedItem.png");
+		Budget.NegativeSelectedItem.loadFromFile("./Asset/Images/Budget/NegativeSelectedItem.png");
+		Budget.LayerLine.loadFromFile("./Asset/Images/Budget/LayerLine.png");
 	}
 
 	TextureManager::AddType TextureManager::Add;

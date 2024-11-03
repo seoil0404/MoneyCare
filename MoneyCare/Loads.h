@@ -46,7 +46,11 @@ namespace sf
 		};
 		struct BudgetType
 		{
-
+			sf::Texture PositiveItem;
+			sf::Texture NegativeItem;
+			sf::Texture PositiveSelectedItem;
+			sf::Texture NegativeSelectedItem;
+			sf::Texture LayerLine;
 		};
 
 	public:

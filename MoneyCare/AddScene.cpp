@@ -59,6 +59,8 @@ void AddScene::ScrollTranslate(sf::Vector2f position, float speed)
 
 void AddScene::Translate(sf::Vector2f position, float speed)
 {
+	
+
 	title->Translate(position, speed);
 	addStartButton->Translate(position, speed);
 	addLayerButton->Translate(position, speed);
