@@ -37,6 +37,12 @@ namespace sf
 		Add.Delete.loadFromFile("./Asset/Images/Add/Delete.png");
 		Add.LayerLine.loadFromFile("./Asset/Images/Add/LayerLine.png");
 
+		View.PositiveItem.loadFromFile("./Asset/Images/View/PositiveItem.png");
+		View.NegativeItem.loadFromFile("./Asset/Images/View/NegativeItem.png");
+		View.LayerLine.loadFromFile("./Asset/Images/View/LayerLine.png");
+		View.PositiveSelectedItem.loadFromFile("./Asset/Images/View/PositiveSelectedItem.png");
+		View.NegativeSelectedItem.loadFromFile("./Asset/Images/View/NegativeSelectedItem.png");
+
 		Category.Item.loadFromFile("./Asset/Images/Category/Item.png");
 		Category.Input.loadFromFile("./Asset/Images/Category/Input.png");
 		Category.Add.loadFromFile("./Asset/Images/Category/Add.png");

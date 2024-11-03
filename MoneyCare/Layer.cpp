@@ -87,6 +87,22 @@ std::pair<int, int> Layer::getTotalAmountInCategory(const Category& category)
 	return std::pair<int, int>(positiveAmount, negativeAmount);
 }
 
+std::pair<int, int> Layer::getTotalAmount()
+{
+	int positiveAmount = 0;
+	int negativeAmount = 0;
+
+	for (Item index : itemData)
+	{
+		int tempAmount = index.getAmount();
+
+		if (tempAmount > 0) positiveAmount += tempAmount;
+		else				negativeAmount += tempAmount;
+	}
+
+	return std::pair<int, int>(positiveAmount, negativeAmount);
+}
+
 Budget Layer::getNextBudget(Category category)
 {
 	for (int index = 0; index < budgetData.size() - 1; index++)

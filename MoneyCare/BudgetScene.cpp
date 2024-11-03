@@ -9,6 +9,8 @@ BudgetScene::BudgetScene()
 	title = sf::TextEx::Create(sf::FontManager::Black, "BUDGET", 80, sf::Vector2f(550, 50));
 	title->setFillColor(sf::Color::Black);
 	
+	Initialize();
+	currentView = nullptr;
 	PrintScroll();
 
 	Translate(sf::Vector2f(-1600, 0), 100);
@@ -100,6 +102,9 @@ void BudgetScene::PrintScroll()
 			tempButton->setClickEvent(
 				[&, layerNum]() {
 					Initialize();
+					if(currentView != nullptr) UnColorView(*currentView);
+					ColorView(view[layerNum]);
+					currentView = &view[layerNum];
 					PrintField(DataManager::getAllLayerRef()[layerNum]);
 				}
 			);
@@ -173,4 +178,36 @@ void BudgetScene::PrintField(Layer& layer)
 			}
 		}
 	);
+}
+
+void BudgetScene::ColorView(std::vector<std::pair<std::shared_ptr<sf::ButtonShape>, std::shared_ptr<sf::TextEx>>>& layer)
+{
+	for (auto index : layer)
+	{
+		std::string amount = index.second->getString();
+		if (std::stoi(amount) >= 0)
+		{
+			index.first->setTexture(&sf::TextureManager::Budget.PositiveSelectedItem);
+		}
+		else
+		{
+			index.first->setTexture(&sf::TextureManager::Budget.NegativeSelectedItem);
+		}
+	}
+}
+
+void BudgetScene::UnColorView(std::vector<std::pair<std::shared_ptr<sf::ButtonShape>, std::shared_ptr<sf::TextEx>>>& layer)
+{
+	for (auto index : layer)
+	{
+		std::string amount = index.second->getString();
+		if (std::stoi(amount) >= 0)
+		{
+			index.first->setTexture(&sf::TextureManager::Budget.PositiveItem);
+		}
+		else
+		{
+			index.first->setTexture(&sf::TextureManager::Budget.NegativeItem);
+		}
+	}
 }

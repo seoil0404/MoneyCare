@@ -86,7 +86,12 @@ void WindowManager::EventUpdate()
 				}
 				else if (eventState.text.unicode >= 48 && eventState.text.unicode <= 57 && inputDigitField != nullptr)
 				{
-					inputDigitField->setString(inputDigitField->getString() + currentKey);
+					if (inputDigitField->getString() == "0") inputDigitField->setString(currentKey);
+					else inputDigitField->setString(inputDigitField->getString() + currentKey);
+				}
+				else if (inputDigitField->getString().getSize() == 0 && eventState.text.unicode == 45)
+				{
+					inputDigitField->setString(currentKey);
 				}
 
 			}

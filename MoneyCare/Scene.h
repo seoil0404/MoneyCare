@@ -8,7 +8,8 @@ enum class SceneType
 	Add,
 	View,
 	Category,
-	Budget
+	Budget,
+	None
 };
 
 // MainUI -------------------------------------------------------------------------------------
@@ -112,8 +113,48 @@ private:
 class ViewScene : public Scene
 {
 public:
-	void Translate(sf::Vector2f, float);
+	ViewScene();
 	~ViewScene() {};
+
+	void Translate(sf::Vector2f, float);
+
+	void ScrollTranslate(sf::Vector2f, float);
+
+	void setScroll();
+
+private:
+	void PrintScroll();
+	void PrintInformation(Item, Layer&);
+
+	void Initialize();
+
+	std::shared_ptr<sf::TextEx> title;
+	
+	std::shared_ptr<sf::TextEx> name;
+	std::shared_ptr<sf::TextEx> amount;
+	std::shared_ptr<sf::TextEx> category;
+
+	std::shared_ptr<sf::TextEx> usage;
+	std::shared_ptr<sf::RectangleShapeEx> usageGraph;
+
+	std::shared_ptr<sf::TextEx> inCategoryUsage;
+	std::shared_ptr<sf::RectangleShapeEx> inCategoryUsageGraph;
+	
+	std::shared_ptr<sf::TextEx> categoryUsage;
+	std::shared_ptr<sf::RectangleShapeEx> categoryUsageGraph;
+
+	std::shared_ptr<sf::TextEx> budgetUsage;
+	std::shared_ptr<sf::RectangleShapeEx> budgetUsageGraph;
+
+	std::vector<std::shared_ptr<sf::ButtonShape>> viewButton;
+	std::vector<std::shared_ptr<sf::TextEx>> viewAmountText;
+
+	std::shared_ptr<sf::ButtonShape>* currentView;
+
+	void ColorView(std::shared_ptr<sf::ButtonShape>, int);
+	void UnColorView(std::shared_ptr<sf::ButtonShape>);
+
+	std::vector<std::shared_ptr<sf::RectangleShapeEx>> viewLayerLine;
 };
 
 // CategoryScene -------------------------------------------------------------------------------------
@@ -176,6 +217,11 @@ private:
 
 	void Initialize();
 	void PrintField(Layer&);
+	
+	std::vector<std::pair<std::shared_ptr<sf::ButtonShape>, std::shared_ptr<sf::TextEx>>>* currentView;
+
+	void ColorView(std::vector<std::pair<std::shared_ptr<sf::ButtonShape>, std::shared_ptr<sf::TextEx>>>&);
+	void UnColorView(std::vector<std::pair<std::shared_ptr<sf::ButtonShape>, std::shared_ptr<sf::TextEx>>>&);
 };
 
 // SceneManager -------------------------------------------------------------------------------------

@@ -35,7 +35,11 @@ namespace sf
 		};
 		struct ViewType
 		{
-
+			sf::Texture PositiveItem;
+			sf::Texture NegativeItem;
+			sf::Texture PositiveSelectedItem;
+			sf::Texture NegativeSelectedItem;
+			sf::Texture LayerLine;
 		};
 		struct CategoryType
 		{

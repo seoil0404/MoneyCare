@@ -2,7 +2,7 @@
 #include "Coroutine.h"
 #include "DebugLog.h"
 
-SceneType SceneManager::scene = SceneType::View;
+SceneType SceneManager::scene = SceneType::None;
 
 AddScene* SceneManager::addScene;
 ViewScene* SceneManager::viewScene;
@@ -45,6 +45,7 @@ void SceneManager::ClearScene(SceneType _scene)
 		addScene->Translate(sf::Vector2f(-1600, 0), 5);
 		break;
 	case SceneType::View:
+		viewScene->Translate(sf::Vector2f(-1600, 0), 5);
 		break;
 	case SceneType::Category:
 		categoryScene->Translate(sf::Vector2f(-1600, 0), 5);
@@ -67,6 +68,9 @@ void SceneManager::IncludeScene(SceneType _scene)
 		Coroutine::AddCoroutine([&]() { addScene->Translate(sf::Vector2f(-1600, 0), 5);});
 		break;
 	case SceneType::View:
+		viewScene->setScroll();
+		viewScene->Translate(sf::Vector2f(3200, 0), 100);
+		Coroutine::AddCoroutine([&]() { viewScene->Translate(sf::Vector2f(-1600, 0), 5);});
 		break;
 	case SceneType::Category:
 		categoryScene->setScroll();

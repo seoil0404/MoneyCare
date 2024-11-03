@@ -200,7 +200,7 @@ void AddScene::PrintAmount()
 	amountText->setFillColor(sf::Color::Black);
 	amountInputButton = sf::ButtonShape::Create(sf::Vector2f(600, 60), sf::Vector2f(690, 355));
 	amountInputButton->setTexture(&sf::TextureManager::Add.Input);
-	amountInputField = sf::TextEx::Create(sf::FontManager::Regular, "", 40, sf::Vector2f(410, 330));
+	amountInputField = sf::TextEx::Create(sf::FontManager::Regular, "0", 40, sf::Vector2f(415, 345));
 	amountInputField->setFillColor(sf::Color::Black);
 
 	amountInputButton->setClickEvent(

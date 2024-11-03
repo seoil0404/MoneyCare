@@ -59,6 +59,8 @@ public:
 
 	// first = positiveAmount , second = negativeAmount
 	std::pair<int, int> getTotalAmountInCategory(const Category&);
+	// first = positiveAmount , second = negativeAmount
+	std::pair<int, int> getTotalAmount();
 
 	const std::vector<Item>& getItemData() const { return itemData; };
 	const std::vector<Budget>& getBudgetData() const { return budgetData; };
