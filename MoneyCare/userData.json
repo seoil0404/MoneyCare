@@ -33,14 +33,29 @@
                     "usageName": "Item1"
                 },
                 {
-                    "amount": -1000,
-                    "category": "Category2",
-                    "usageName": "Item2"
-                },
-                {
                     "amount": 100000,
                     "category": "Category1",
                     "usageName": "Item3"
+                },
+                {
+                    "amount": 15135,
+                    "category": "Category1",
+                    "usageName": "afag"
+                }
+            ]
+        },
+        {
+            "budgetData": [
+                {
+                    "amount": 0,
+                    "category": "Category1"
+                }
+            ],
+            "itemData": [
+                {
+                    "amount": 125125,
+                    "category": "Category1",
+                    "usageName": "asga"
                 }
             ]
         }

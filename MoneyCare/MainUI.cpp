@@ -1,6 +1,9 @@
 #include "Scene.h"
 #include "Loads.h"
+#include "DataManager.h"
 #include "DebugLog.h"
+#include "Json.h"
+#include "Category.h"
 
 MainUI::MainUI()
 {

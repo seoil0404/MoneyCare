@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "Coroutine.h"
 #include "DebugLog.h"
+#include "Json.h"
 
 SceneType SceneManager::scene = SceneType::None;
 
@@ -24,6 +25,7 @@ void SceneManager::UpdateScene()
 	ClearScene(SceneType::Category);
 	ClearScene(SceneType::Budget);
 	Initialize();
+	JsonManager::SaveData(DataManager::getAllLayer(), CategoryManager::getAllCategoryData());
 	IncludeScene(scene);
 }
 
