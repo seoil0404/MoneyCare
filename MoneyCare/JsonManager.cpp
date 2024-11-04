@@ -28,16 +28,16 @@ nlohmann::json JsonManager::LoadJsonFile()
 {
 	nlohmann::json json;
 
-	std::ifstream file(jsonFilePath());
+	std::ifstream file(jsonFilePath(), std::ios::binary);
 
 	if (!file.is_open())
 	{
 		Debug::Log("DEBUG: No file!");
-		std::ofstream makeFile(jsonFilePath());
+		std::ofstream makeFile(jsonFilePath(), std::ios::binary);
 		JsonManager::SaveData(DataManager::getAllLayerRef(), CategoryManager::getAllCategoryDataRef());
 		makeFile.close();
 		
-		file.open(jsonFilePath());
+		file.open(jsonFilePath(), std::ios::binary);
 	}
 	
 	file >> json;
@@ -48,7 +48,7 @@ nlohmann::json JsonManager::LoadJsonFile()
 
 void JsonManager::SaveJsonFile(const nlohmann::json& json)
 {
-	std::ofstream file(jsonFilePath());
+	std::ofstream file(jsonFilePath(), std::ios::binary);
 
 	file << json.dump(4);
 	file.close();

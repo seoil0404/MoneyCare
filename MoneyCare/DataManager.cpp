@@ -24,7 +24,7 @@ Layer& DataManager::getLayer(std::vector<Layer>::iterator index)
 Layer& DataManager::getRecentLayer()
 {
 	if (IsEmpty()) {
-		Debug::Log("Error: Attempted to access a layer that does not exist.\n");
+		layerData.emplace_back();
 	}
 	return layerData.back();
 }

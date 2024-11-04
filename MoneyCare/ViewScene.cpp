@@ -156,15 +156,15 @@ void ViewScene::PrintInformation(Item item, Layer& layer)
 		if (budgetAmount == 0) _budgetUsage = 100;
 	}
 
-	usage = sf::TextEx::Create(sf::FontManager::Light, "", 30, sf::Vector2f(405, 395));
+	usage = sf::TextEx::Create(sf::FontManager::Light, "", 30, sf::Vector2f(395, 395));
 	usage->setFillColor(sf::Color::Black);
 	usage->setString("Usage | " + std::to_string(_usage) + "%");
 
-	inCategoryUsage = sf::TextEx::Create(sf::FontManager::Light, "", 30, sf::Vector2f(405, 495));
+	inCategoryUsage = sf::TextEx::Create(sf::FontManager::Light, "", 30, sf::Vector2f(395, 495));
 	inCategoryUsage->setFillColor(sf::Color::Black);
 	inCategoryUsage->setString("In Category Usage | " + std::to_string(_inCategoryUsage) + "%");
 
-	categoryUsage = sf::TextEx::Create(sf::FontManager::Light, "", 30, sf::Vector2f(405, 595));
+	categoryUsage = sf::TextEx::Create(sf::FontManager::Light, "", 30, sf::Vector2f(395, 595));
 	categoryUsage->setFillColor(sf::Color::Black);
 	categoryUsage->setString("Category Usage | " + std::to_string(_categoryUsage) + "%");
 
@@ -189,7 +189,7 @@ void ViewScene::PrintInformation(Item item, Layer& layer)
 		inCategoryUsageGraph->setFillColor(red);
 		categoryUsageGraph->setFillColor(red);
 
-		budgetUsage = sf::TextEx::Create(sf::FontManager::Light, "", 30, sf::Vector2f(405, 695));
+		budgetUsage = sf::TextEx::Create(sf::FontManager::Light, "", 30, sf::Vector2f(395, 695));
 		budgetUsage->setFillColor(sf::Color::Black);
 		budgetUsage->setString("Budget Usage | " + std::to_string(_budgetUsage) + "%");
 

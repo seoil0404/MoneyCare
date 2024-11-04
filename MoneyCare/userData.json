@@ -5,9 +5,6 @@
         },
         {
             "category": "Category2"
-        },
-        {
-            "category": "Category3"
         }
     ],
     "userUsageData": [
@@ -15,47 +12,27 @@
             "budgetData": [
                 {
                     "amount": 0,
+                    "category": "Aaaa"
+                },
+                {
+                    "amount": 0,
                     "category": "Category3"
                 },
                 {
                     "amount": 0,
-                    "category": "Category2"
-                },
-                {
-                    "amount": 0,
                     "category": "Category1"
                 }
             ],
             "itemData": [
                 {
-                    "amount": 100,
-                    "category": "Category3",
-                    "usageName": "Item1"
+                    "amount": 135,
+                    "category": "Category1",
+                    "usageName": "gdsgs"
                 },
                 {
-                    "amount": 100000,
+                    "amount": -136,
                     "category": "Category1",
-                    "usageName": "Item3"
-                },
-                {
-                    "amount": 15135,
-                    "category": "Category1",
-                    "usageName": "afag"
-                }
-            ]
-        },
-        {
-            "budgetData": [
-                {
-                    "amount": 0,
-                    "category": "Category1"
-                }
-            ],
-            "itemData": [
-                {
-                    "amount": 125125,
-                    "category": "Category1",
-                    "usageName": "asga"
+                    "usageName": "2363"
                 }
             ]
         }

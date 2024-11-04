@@ -22,6 +22,7 @@ public:
 private:
 	SceneType type;
 	std::shared_ptr<sf::RectangleShapeEx> backGround;
+	std::shared_ptr<sf::RectangleShapeEx> logo;
 
 	std::shared_ptr<sf::ButtonShape> addButton;
 	std::shared_ptr<sf::TextEx> addButtonText;
@@ -39,6 +40,7 @@ private:
 	void PrintView();
 	void PrintCategory();
 	void PrintBudget();
+	void PrintLogo();
 
 	void OnHovering(std::shared_ptr<sf::ButtonShape>, std::shared_ptr<sf::TextEx>);
 	
@@ -77,6 +79,7 @@ private:
 	std::shared_ptr<sf::TextEx> title;
 
 	std::shared_ptr<sf::ButtonShape> addStartButton;
+	std::shared_ptr<sf::TextEx> disableText;
 
 	std::shared_ptr<sf::ButtonShape> addLayerButton;
 
@@ -101,9 +104,14 @@ private:
 
 	void Initialize();
 
+	void ColorView(std::shared_ptr<sf::ButtonShape>, int);
+	void UnColorView(std::shared_ptr<sf::ButtonShape>);
+
 	std::vector<std::shared_ptr<sf::ButtonShape>> viewButton;
 	std::vector<std::shared_ptr<sf::TextEx>> viewAmountText;
 	std::vector<std::shared_ptr<sf::RectangleShapeEx>> viewLayerLine;
+
+	std::shared_ptr<sf::ButtonShape>* currentView;
 
 	std::shared_ptr<sf::ButtonShape> deleteButton;
 };
@@ -129,6 +137,8 @@ private:
 	void Initialize();
 
 	std::shared_ptr<sf::TextEx> title;
+
+	std::shared_ptr<sf::TextEx> disableText;
 	
 	std::shared_ptr<sf::TextEx> name;
 	std::shared_ptr<sf::TextEx> amount;
@@ -172,6 +182,8 @@ public:
 private:
 	std::shared_ptr<sf::TextEx> title;
 
+	std::shared_ptr<sf::TextEx> disableText;
+
 	std::shared_ptr<sf::TextEx> inputButtonText;
 	std::shared_ptr<sf::ButtonShape> inputButton;
 	std::shared_ptr<sf::TextEx> inputField;
@@ -201,6 +213,8 @@ private:
 	void PrintScroll();
 
 	std::shared_ptr<sf::TextEx> title;
+
+	std::shared_ptr<sf::TextEx> disableText;
 
 	std::shared_ptr<sf::TextEx> amountText;
 	std::shared_ptr<sf::ButtonShape> amountInputButton;

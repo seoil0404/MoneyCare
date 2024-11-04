@@ -51,8 +51,8 @@ int main()
 void Start()
 {
 	SceneManager::Initialize();
-
 	static MainUI mainUI;
+	SceneManager::MoveScene(SceneType::Add);
 }
 
 void TestDataSettings()

@@ -30,6 +30,8 @@ namespace sf
 			sf::Texture Input;
 			sf::Texture PositiveItem;
 			sf::Texture NegativeItem;
+			sf::Texture PositiveSelectedItem;
+			sf::Texture NegativeSelectedItem;
 			sf::Texture Delete;
 			sf::Texture LayerLine;
 		};
@@ -56,10 +58,11 @@ namespace sf
 			sf::Texture NegativeSelectedItem;
 			sf::Texture LayerLine;
 		};
+		
 
 	public:
 		static void Initialize();
-
+		static sf::Texture Logo;
 		static AddType Add;
 		static ViewType View;
 		static CategoryType Category;

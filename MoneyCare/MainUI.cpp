@@ -4,6 +4,7 @@
 #include "DebugLog.h"
 #include "Json.h"
 #include "Category.h"
+#include "Loads.h"
 
 MainUI::MainUI()
 {
@@ -11,6 +12,13 @@ MainUI::MainUI()
 	PrintView();
 	PrintCategory();
 	PrintBudget();
+	PrintLogo();
+}
+
+void MainUI::PrintLogo()
+{
+	logo = sf::RectangleShapeEx::Create(sf::Vector2f(200, 200), sf::Vector2f(165, 125));
+	logo->setTexture(&sf::TextureManager::Logo);
 }
 
 void MainUI::OnHovering(std::shared_ptr<sf::ButtonShape> object, std::shared_ptr<sf::TextEx> text)
@@ -47,8 +55,8 @@ void MainUI::PrintAdd()
 	backGround = sf::RectangleShapeEx::Create(sf::Vector2f(350, 900), sf::Vector2f(175, 450));
 	backGround->setFillColor(sf::Color(50, 124, 222));
 
-	addButton = sf::ButtonShape::Create(sf::Vector2f(195, 60), sf::Vector2f(120, 300));
-	addButtonText = sf::TextEx::Create(sf::FontManager::SemiBold, "ADD", 25, sf::Vector2f(70, 297));
+	addButton = sf::ButtonShape::Create(sf::Vector2f(195, 60), sf::Vector2f(117, 297));
+	addButtonText = sf::TextEx::Create(sf::FontManager::SemiBold, "ADD", 25, sf::Vector2f(70, 293));
 	addButtonText->setFillColor(sf::Color::Black);
 	addButton->setEnterEvent(
 		[&]() { OnHovering(addButton, addButtonText);}
@@ -80,7 +88,7 @@ void MainUI::PrintView()
 void MainUI::PrintCategory()
 {
 	categoryButton = sf::ButtonShape::Create(sf::Vector2f(195, 60), sf::Vector2f(120, 600));
-	categoryButtonText = sf::TextEx::Create(sf::FontManager::SemiBold, "CATEGORY", 25, sf::Vector2f(90, 597));
+	categoryButtonText = sf::TextEx::Create(sf::FontManager::SemiBold, "CATEGORY", 25, sf::Vector2f(95, 595));
 	categoryButtonText->setFillColor(sf::Color::Black);
 	categoryButton->setEnterEvent(
 		[&]() { OnHovering(categoryButton, categoryButtonText);}
@@ -96,7 +104,7 @@ void MainUI::PrintCategory()
 void MainUI::PrintBudget()
 {
 	budgetButton = sf::ButtonShape::Create(sf::Vector2f(195, 60), sf::Vector2f(120, 750));
-	budgetButtonText = sf::TextEx::Create(sf::FontManager::SemiBold, "BUDGET", 25, sf::Vector2f(77, 747));
+	budgetButtonText = sf::TextEx::Create(sf::FontManager::SemiBold, "BUDGET", 25, sf::Vector2f(83, 747));
 	budgetButtonText->setFillColor(sf::Color::Black);
 	budgetButton->setEnterEvent(
 		[&]() { OnHovering(budgetButton, budgetButtonText);}

@@ -36,6 +36,8 @@ namespace sf
 		Add.NegativeItem.loadFromFile("./Asset/Images/Add/NegativeItem.png");
 		Add.Delete.loadFromFile("./Asset/Images/Add/Delete.png");
 		Add.LayerLine.loadFromFile("./Asset/Images/Add/LayerLine.png");
+		Add.PositiveSelectedItem.loadFromFile("./Asset/Images/Add/PositiveSelectedItem.png");
+		Add.NegativeSelectedItem.loadFromFile("./Asset/Images/Add/NegativeSelectedItem.png");
 
 		View.PositiveItem.loadFromFile("./Asset/Images/View/PositiveItem.png");
 		View.NegativeItem.loadFromFile("./Asset/Images/View/NegativeItem.png");
@@ -53,10 +55,13 @@ namespace sf
 		Budget.PositiveSelectedItem.loadFromFile("./Asset/Images/Budget/PositiveSelectedItem.png");
 		Budget.NegativeSelectedItem.loadFromFile("./Asset/Images/Budget/NegativeSelectedItem.png");
 		Budget.LayerLine.loadFromFile("./Asset/Images/Budget/LayerLine.png");
+
+		Logo.loadFromFile("./Asset/Images/Logo.png");
 	}
 
 	TextureManager::AddType TextureManager::Add;
 	TextureManager::ViewType TextureManager::View;
 	TextureManager::CategoryType TextureManager::Category;
 	TextureManager::BudgetType TextureManager::Budget;
+	sf::Texture TextureManager::Logo;
 }

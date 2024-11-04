@@ -9,19 +9,32 @@
 
 AddScene::AddScene()
 {
+	if (DataManager::IsEmpty())
+	{
+		DataManager::AddLayer();
+	}
+	
 	title = sf::TextEx::Create(sf::FontManager::Black, "ADD", 80, sf::Vector2f(480, 50));
 	title->setFillColor(sf::Color::Black);
 
 	addStartButton = sf::ButtonShape::Create(sf::Vector2f(50, 50), sf::Vector2f(420, 200));
 	addStartButton->setTexture(&sf::TextureManager::Add.Add);
+	if (CategoryManager::CategoryDataSize() == 0)
+	{
+		disableText = sf::TextEx::Create(sf::FontManager::Light, "Add Category First!", 20, sf::Vector2f(483, 120));
+		disableText->setFillColor(sf::Color::Red);
+	}
 
 	addLayerButton = sf::ButtonShape::Create(sf::Vector2f(156, 48), sf::Vector2f(550, 200));
 	addLayerButton->setTexture(&sf::TextureManager::Add.AddLayer);
 
 	addStartButton->setClickEvent(
 		[&]() { 
-			Initialize();
-			PrintAmount(); 
+			if (CategoryManager::CategoryDataSize() != 0)
+			{
+				Initialize();
+				PrintAmount();
+			}
 		}
 	);
 
@@ -59,11 +72,11 @@ void AddScene::ScrollTranslate(sf::Vector2f position, float speed)
 
 void AddScene::Translate(sf::Vector2f position, float speed)
 {
-	
-
 	title->Translate(position, speed);
 	addStartButton->Translate(position, speed);
 	addLayerButton->Translate(position, speed);
+
+	if (disableText != nullptr) disableText->Translate(position, speed);
 
 	if (amountText != nullptr) amountText->Translate(position, speed);
 	if (amountInputButton != nullptr) amountInputButton->Translate(position, speed);
@@ -104,10 +117,16 @@ void AddScene::PrintScroll()
 			);
 
 			viewButton.back()->setClickEvent(
-				[&, layerIndex, itemIndex, index]() {
+				[&, layerIndex, itemIndex, index, tray, item]() {
+
+					ColorView(viewButton[tray - (layerIndex + 1)], item.getAmount());
+					if (currentView != nullptr) UnColorView(*currentView);
+					currentView = &viewButton[tray - (layerIndex + 1)];
+
 					deleteButton = sf::ButtonShape::Create(sf::Vector2f(1, 1), viewButton[index]->getPosition() + sf::Vector2f(-260, 0));
 					deleteButton->Resize(sf::Vector2f(150, 60), 10);
 					deleteButton->setTexture(&sf::TextureManager::Add.Delete);
+
 					deleteButton->setClickEvent([&]() {
 							DataManager::getAllLayerRef()[layerIndex].DeleteItem(
 								DataManager::getAllLayerRef()[layerIndex].getItemDataRef().begin() + itemIndex
@@ -116,6 +135,7 @@ void AddScene::PrintScroll()
 							Coroutine::AddCoroutine([&]() {deleteButton.reset();});
 						}
 					);
+					
 
 					PrintAmount();
 					PrintName();
@@ -238,11 +258,13 @@ void AddScene::PrintCategory()
 	categoryInputButton->setTexture(&sf::TextureManager::Add.Input);
 	categoryInputField = sf::TextEx::Create(sf::FontManager::Regular, "", 40, sf::Vector2f(410, 630));
 	categoryInputField->setFillColor(sf::Color::Black);
-	categoryInputField->setString(CategoryManager::getAllCategoryData().front().getCategoryName());
+	
+	if (CategoryManager::getAllCategoryData().size() > 0) categoryInputField->setString(CategoryManager::getAllCategoryData().front().getCategoryName());
+	else categoryInputField->setString("None");
 
 	categoryInputButton->setClickEvent(
 		[&]() {
-			categoryInputField->setString(CategoryManager::getNextCategory(Category(categoryInputField->getString())).getCategoryName());
+			if(CategoryManager::CategoryDataSize() > 0) categoryInputField->setString(CategoryManager::getNextCategory(Category(categoryInputField->getString())).getCategoryName());
 		}
 	);
 
@@ -281,7 +303,6 @@ void AddScene::Initialize()
 	amountText = nullptr;
 	amountInputButton = nullptr;
 	amountInputField = nullptr;
-	
 
 	nameText = nullptr;
 	nameInputButton = nullptr;
@@ -292,4 +313,30 @@ void AddScene::Initialize()
 	categoryInputField = nullptr;
 
 	addItemButton = nullptr;
+
+	disableText = nullptr;
+}
+
+void AddScene::ColorView(std::shared_ptr<sf::ButtonShape> button, int amount)
+{
+	if (amount >= 0)
+	{
+		button->setTexture(&sf::TextureManager::View.PositiveSelectedItem);
+	}
+	else
+	{
+		button->setTexture(&sf::TextureManager::View.NegativeSelectedItem);
+	}
+}
+
+void AddScene::UnColorView(std::shared_ptr<sf::ButtonShape> button)
+{
+	if (button->getTexture() == &sf::TextureManager::View.PositiveSelectedItem)
+	{
+		button->setTexture(&sf::TextureManager::View.PositiveItem);
+	}
+	else
+	{
+		button->setTexture(&sf::TextureManager::View.NegativeItem);
+	}
 }
