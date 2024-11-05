@@ -6,17 +6,11 @@
  * You can use, copy, modify, and distribute this program freely.
  */
 
-#include <functional>
-#include <queue>
-#include <iostream>
-#include <SFML/Graphics.hpp>
-#include "Extentions.h"
 #include "Coroutine.h"
 #include "Category.h"
 #include "DataManager.h"
 #include "Json.h"
 #include "Global.h"
-#include "DebugLog.h"
 #include "WindowManager.h"
 #include "Loads.h"
 #include "Scene.h"
